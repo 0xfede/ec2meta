@@ -1,0 +1,37 @@
+{
+  "name": "ec2meta",
+  "version": "1.0.0",
+  "description": "Easily retrieve meta-data and tags of AWS EC2 instances from the command line",
+  "main": "ec2meta.js",
+  "bin": {
+    "ec2meta": "./ec2meta.js",
+    "ec2meta-meta": "./ec2meta-meta.js",
+    "ec2meta-tag": "./ec2meta-tag.js",
+  },
+  "dependencies": {
+    "aws-sdk": "^2.4.14",
+    "commander": "^2.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0xfede/ec2meta.git"
+  },
+  "keywords": [
+    "ec2",
+    "meta",
+    "metadata",
+    "meta-data",
+    "tag",
+    "tags",
+    "aws",
+    "cli",
+    "command",
+    "line"
+  ],
+  "author": "Federico Pinna <0xfede@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/0xfede/ec2meta/issues"
+  },
+  "homepage": "https://github.com/0xfede/ec2meta#readme"
+}
