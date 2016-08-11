@@ -6,7 +6,7 @@
   "bin": {
     "ec2meta": "./ec2meta.js",
     "ec2meta-meta": "./ec2meta-meta.js",
-    "ec2meta-tag": "./ec2meta-tag.js",
+    "ec2meta-tag": "./ec2meta-tag.js"
   },
   "dependencies": {
     "aws-sdk": "^2.4.14",
