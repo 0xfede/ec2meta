@@ -9,6 +9,8 @@ LOCAL_IP=`ec2meta meta local-ipv4`
 echo $LOCAL_IP
 ```
 
+The tool requires either the instance to have a valid **IAM Role** or the user executing it to have a valid `~/.aws/credentials` file. In both cases, the credentials must be granted access to EC2 in readonly mode. Please see the documentation of the [AWS Node.js SDK](http://docs.aws.amazon.com/AWSJavaScriptSDK/guide/node-configuring.html) for more information.
+
 ## Metadata
 
 Retrieve any instance meta-data by path.
