@@ -20,6 +20,17 @@ class Metadata {
     }
     return this.cache[path];
   }
+  document() {
+    return new Promise((resolve, reject) => {
+      this.service.request('/latest/dynamic/instance-identity/document', function(err, data) {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(JSON.parse(data));
+        }
+      });
+    });
+  }
 }
 Metadata.DEFAULT_ROOT = '/latest/meta-data';
 

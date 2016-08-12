@@ -30,14 +30,25 @@ Retrieve any instance tag by name:
 $ ec2meta tag Name
 ```
 
-## Instance data
+## Instance identity document
+Retrieve data from the [instance identify document](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-identity-documents.html) returned by `http://169.254.169.254/latest/dynamic/instance-identity/document`.
+The data to be retrieved is specified as a JSON Pointer and it’s returned, by default, as a JSON string is the value is an object, or as a raw value in all other cased. The JSON output can be forced using the -j option.
 
+Examples:
+```bash
+$ ec2meta identity
+$ ec2meta identify region
+$ ec2meta identify instanceId
+```
+
+
+## Instance data
 Retrieve data from the description of the instance returned by `EC2.describeInstances`.
 The data to be retrieved is specified as a JSON Pointer and it’s returned, by default, as a JSON string is the value is an object, or as a raw value in all other cased. The JSON output can be forced using the -j option.
 
 Examples:
 ```bash
-$ ec2meta instance /
+$ ec2meta instance
 $ ec2meta instance Placement/AvailabilityZone
 $ ec2meta instance NetworkInterfaces/0/Status
 ```

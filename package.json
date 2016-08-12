@@ -1,12 +1,13 @@
 {
   "name": "ec2meta",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Easily retrieve meta-data, tags and other information of the current AWS EC2 instance",
   "main": "ec2meta.js",
   "bin": {
     "ec2meta": "./src/ec2meta.js",
     "ec2meta-meta": "./src/ec2meta-meta.js",
     "ec2meta-tag": "./src/ec2meta-tag.js",
+    "ec2meta-identity": "./src/ec2meta-identity.js",
     "ec2meta-instance": "./src/ec2meta-instance.js"
   },
   "dependencies": {

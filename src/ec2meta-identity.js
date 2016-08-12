@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var instance = require('./instance')
+var Metadata = require('./meta')
   , program = require('commander')
   , jr = require('jsonref')
   , info = require('../package.json')
@@ -20,7 +20,8 @@ if (!path) {
   if (path[0] !== '#') path = '#' + path;
   if (path[1] !== '/') path = '#/' + path.substr(1);
 }
-instance().then(data => {
+var m = new Metadata();
+m.document().then(data => {
   let out = path.length > 2 ? jr.pointer(data, path) : data;
   if (program.json || typeof out === 'object') {
     out = JSON.stringify(out, null, program.pretty ? 2 : null) + (program.pretty ? '\n' : '');
