@@ -2,7 +2,7 @@
 
 var tags = require('./tags')
   , program = require('commander')
-  , info = require('./package.json')
+  , info = require('../package.json')
   , name
 
 program

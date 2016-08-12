@@ -2,7 +2,7 @@
 
 var Metadata = require('./meta')
   , program = require('commander')
-  , info = require('./package.json')
+  , info = require('../package.json')
   , path
 
 program

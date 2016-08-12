@@ -1,16 +1,18 @@
 {
   "name": "ec2meta",
-  "version": "1.0.0",
-  "description": "Easily retrieve meta-data and tags of AWS EC2 instances from the command line",
+  "version": "1.1.0",
+  "description": "Easily retrieve meta-data, tags and other information of the current AWS EC2 instance",
   "main": "ec2meta.js",
   "bin": {
     "ec2meta": "./ec2meta.js",
     "ec2meta-meta": "./ec2meta-meta.js",
     "ec2meta-tag": "./ec2meta-tag.js"
+    "ec2meta-instance": "./ec2meta-instance.js"
   },
   "dependencies": {
     "aws-sdk": "^2.4.14",
-    "commander": "^2.9.0"
+    "commander": "^2.9.0",
+    "jsonref": "^3.2.0"
   },
   "repository": {
     "type": "git",
@@ -33,5 +35,9 @@
   "bugs": {
     "url": "https://github.com/0xfede/ec2meta/issues"
   },
-  "homepage": "https://github.com/0xfede/ec2meta#readme"
+  "homepage": "https://github.com/0xfede/ec2meta#readme",
+  "engines": {
+    "node": ">=4.3"
+  },
+  "preferGlobal": true
 }
