@@ -1,6 +1,6 @@
 {
   "name": "ec2meta",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Easily retrieve meta-data, user-data, tags and other information about the current AWS EC2 instance",
   "main": "ec2meta.js",
   "bin": {

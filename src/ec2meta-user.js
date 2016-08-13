@@ -8,6 +8,7 @@ var Metadata = require('./meta')
 program
   .version(info.version)
   .arguments('[path]')
+  .option('-J, --json_input', 'Expect a JSON input')
   .option('-j, --json', 'Always produce a JSON output')
   .option('-p, --pretty', 'Format a JSON output')
   .option('-d, --debug', 'Print error messages to stderr')
@@ -18,11 +19,11 @@ var path = program.args[0] || '';
 if (path) {
   if (path[0] !== '#') path = '#' + path;
   if (path[1] !== '/') path = '#/' + path.substr(1);
-  program.json = true;
+  program.json_input = true;
 }
 var m = new Metadata();
 m.user().then(data => {
-  if (program.json) {
+  if (program.json_input) {
     data = JSON.parse(data);
   }
   let out = path.length > 2 ? jr.pointer(data, path) : data;
