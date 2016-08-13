@@ -8,13 +8,21 @@ var tags = require('./tags')
 program
   .version(info.version)
   .arguments('<name>')
+  .option('-d, --debug', 'Print error messages to stderr')
   .action(function(_name) {
     name = _name;
     tags().then(tags => {
-      process.stdout.write(tags[name] || '');
-      process.exit(0);
-    }, err => {
-      console.error(err);
+      var out = tags[name];
+      if (typeof out === 'undefined') {
+        process.exit(2);
+      } else {
+        process.stdout.write(out);
+        process.exit(0);
+      }
+    }).catch(err => {
+      if (program.debug) {
+        console.error(err);
+      }
       process.exit(1);
     })
   })

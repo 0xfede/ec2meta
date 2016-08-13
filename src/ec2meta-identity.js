@@ -10,6 +10,7 @@ program
   .arguments('[path]')
   .option('-j, --json', 'Always produce a JSON output')
   .option('-p, --pretty', 'Format a JSON output')
+  .option('-d, --debug', 'Print error messages to stderr')
   .parse(process.argv);
 
 var path = program.args[0];
@@ -23,12 +24,18 @@ if (!path) {
 var m = new Metadata();
 m.document().then(data => {
   let out = path.length > 2 ? jr.pointer(data, path) : data;
-  if (program.json || typeof out === 'object') {
-    out = JSON.stringify(out, null, program.pretty ? 2 : null) + (program.pretty ? '\n' : '');
+  if (typeof out === 'undefined') {
+    process.exit(2);
+  } else {
+    if (program.json || typeof out === 'object') {
+      out = JSON.stringify(out, null, program.pretty ? 2 : null) + (program.pretty ? '\n' : '');
+    }
+    process.stdout.write(out);
+    process.exit(0);
   }
-  process.stdout.write(out);
-  process.exit(0);
-}, err => {
-  console.error(err);
+}).catch(err => {
+  if (program.debug) {
+    console.error(err);
+  }
   process.exit(1);
 });

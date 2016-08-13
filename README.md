@@ -1,5 +1,5 @@
 # ec2meta
-Easily retrieve meta-data, tags and other information about the AWS EC2 instance where the command is executed.
+Easily retrieve meta-data, user-data, tags and other information about the AWS EC2 instance where the command is executed.
 
 The tool is designed to be used in shell scripts, to easily retrieve information about the current EC2 instance.
 
@@ -30,6 +30,15 @@ Retrieve any instance tag by name:
 $ ec2meta tag Name
 ```
 
+## User data
+Retrieve the instance user data. If a path is specified, the data is treated as a JSON and searched using path as a JSON pointer.
+
+Examples:
+```bash
+$ ec2meta user 
+$ ec2meta meta some/custom/property
+```
+ 
 ## Instance identity document
 Retrieve data from the [instance identify document](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-identity-documents.html) returned by `http://169.254.169.254/latest/dynamic/instance-identity/document`.
 The data to be retrieved is specified as a JSON Pointer and it’s returned, by default, as a JSON string is the value is an object, or as a raw value in all other cased. The JSON output can be forced using the -j option.

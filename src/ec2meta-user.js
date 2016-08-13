@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var instance = require('./instance')
+var Metadata = require('./meta')
   , program = require('commander')
   , jr = require('jsonref')
   , info = require('../package.json')
@@ -13,15 +13,18 @@ program
   .option('-d, --debug', 'Print error messages to stderr')
   .parse(process.argv);
 
-var path = program.args[0];
+var path = program.args[0] || '';
 
-if (!path) {
-  path = '#/';
-} else {
+if (path) {
   if (path[0] !== '#') path = '#' + path;
   if (path[1] !== '/') path = '#/' + path.substr(1);
+  program.json = true;
 }
-instance().then(data => {
+var m = new Metadata();
+m.user().then(data => {
+  if (program.json) {
+    data = JSON.parse(data);
+  }
   let out = path.length > 2 ? jr.pointer(data, path) : data;
   if (typeof out === 'undefined') {
     process.exit(2);
@@ -29,7 +32,7 @@ instance().then(data => {
     if (program.json || typeof out === 'object') {
       out = JSON.stringify(out, null, program.pretty ? 2 : null) + (program.pretty ? '\n' : '');
     }
-    process.stdout.write(out);
+    process.stdout.write('' + out);
     process.exit(0);
   }
 }).catch(err => {
